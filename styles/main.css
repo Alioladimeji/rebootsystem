@@ -1458,3 +1458,40 @@ section {
         margin: 2rem auto;
     }
 }
+
+/* Quick Fix - Force Horizontal Button */
+@media (max-width: 768px) {
+    .cta-button {
+        display: flex !important;
+        flex-direction: row !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: 100% !important;
+        padding: 14px 20px !important;
+        margin: 10px auto !important;
+        overflow-x: auto !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .cta-button.large {
+        padding: 16px 24px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Hide strike price on mobile to save space */
+    .cta-button .strike-price {
+        display: none !important;
+    }
+    
+    /* Or make everything smaller */
+    .cta-button * {
+        font-size: inherit !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        font-size: 0.8rem !important;
+        padding: 12px 16px !important;
+    }
+}
