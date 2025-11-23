@@ -1,181 +1,8 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* ============================================
+   FIXED BUTTON STYLING - MAINTAINS SHAPE
+   ============================================ */
 
-:root {
-    /* Dark Theme Colors */
-    --primary: #22c55e;
-    --primary-hover: #16a34a;
-    --primary-light: rgba(34, 197, 94, 0.1);
-    
-    /* Dark Backgrounds */
-    --bg-main: #0f0f0f;
-    --bg-alt: #171717;
-    --bg-darker: #0a0a0a;
-    --bg-card: #1a1a1a;
-    --bg-hover: #222222;
-    
-    /* Text Colors */
-    --text-primary: #f0f0f0;
-    --text-secondary: #a8a8a8;
-    --text-muted: #737373;
-    --text-danger: #ef4444;
-    
-    /* Borders */
-    --border: rgba(255, 255, 255, 0.1);
-    --border-light: rgba(255, 255, 255, 0.05);
-    
-    /* Typography */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --line-height: 1.7;
-    
-    /* Spacing */
-    --container-max: 1200px;
-    --container-narrow: 800px;
-    --section-padding: 80px 0;
-    
-    /* Effects */
-    --border-radius: 8px;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-/* Base Styles */
-body {
-    font-family: var(--font-family);
-    font-size: 18px;
-    line-height: var(--line-height);
-    color: var(--text-primary);
-    background: var(--bg-main);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Container */
-.container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.container.narrow {
-    max-width: var(--container-narrow);
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-}
-
-h2 {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
-    margin-bottom: 1.5rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-p {
-    margin-bottom: 1.25rem;
-    color: var(--text-secondary);
-}
-
-strong {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-em {
-    font-style: italic;
-    color: var(--text-primary);
-}
-
-/* Links */
-a {
-    color: var(--primary);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-a:hover {
-    color: var(--primary-hover);
-}
-
-/* Sections */
-section {
-    padding: var(--section-padding);
-}
-
-.section-main {
-    background: var(--bg-main);
-}
-
-.section-alt {
-    background: var(--bg-alt);
-}
-
-.section-darker {
-    background: var(--bg-darker);
-}
-
-.section-pricing {
-    background: var(--bg-main);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.section-cta {
-    background: var(--bg-darker);
-    border-top: 1px solid var(--border);
-    padding: 60px 0;
-}
-
-/* Hero Section */
-.hero {
-    padding: 100px 0;
-    text-align: center;
-    background: var(--bg-main);
-    border-bottom: 1px solid var(--border);
-}
-
-.hero .headline {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-}
-
-.hero .subheadline {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-}
-
-.hero .description {
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-}
-
-.hero .guarantee {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-/* CTA Button */
+/* Base Button Style - Keep Consistent */
 .cta-button {
     display: inline-flex;
     align-items: center;
@@ -191,1307 +18,154 @@ section {
     transition: all 0.2s;
     font-family: inherit;
     letter-spacing: 0.5px;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.cta-button:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-}
-
+/* Large Button Variant */
 .cta-button.large {
     padding: 20px 40px;
     font-size: 1.1rem;
 }
 
-.arrow-icon {
-    transition: transform 0.2s;
-}
-
-.cta-button:hover .arrow-icon {
-    transform: translateX(3px);
-}
-
-/* Content Styling */
-.content-box {
-    max-width: var(--container-narrow);
-    margin: 0 auto;
-}
-
-/* Highlight Box */
-.highlight-box {
-    background: rgba(251, 191, 36, 0.1);
-    border-left: 4px solid #fbbf24;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: var(--border-radius);
-}
-
-.highlight-box p {
-    margin: 0;
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-/* Scenario Cards */
-.scenario-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-}
-
-.scenario-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-}
-
-.scenario-card:hover {
-    background: var(--bg-hover);
-    transform: translateY(-2px);
-}
-
-.scenario-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-/* Pain List */
-.pain-list {
-    list-style: none;
-    margin: 2rem 0;
-    padding: 0;
-}
-
-.pain-list li {
-    position: relative;
-    padding: 1rem 0 1rem 2rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-secondary);
-}
-
-.pain-list li:last-child {
-    border-bottom: none;
-}
-
-.pain-list li:before {
-    content: "×";
-    position: absolute;
-    left: 0;
-    color: var(--text-danger);
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Text Utilities */
-.text-primary {
-    color: var(--primary);
-}
-
-.text-danger {
-    color: var(--text-danger);
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* Truth Box */
-.truth-box {
-    background: var(--primary);
-    color: var(--bg-main);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    margin: 3rem 0;
-    text-align: center;
-}
-
-.truth-box p {
-    margin: 0;
-    color: var(--bg-main);
-    font-size: 1.1rem;
-}
-
-.truth-box strong {
-    color: var(--bg-main);
-}
-
-/* Theory Box */
-.theory-box {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 2rem;
-    border: 1px solid var(--border);
-}
-
-/* Process Grid */
-.process-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.process-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-}
-
-.process-card:hover {
-    background: var(--bg-hover);
-}
-
-.process-card .number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--primary);
-    color: var(--bg-main);
-    border-radius: 50%;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.energy-indicator {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-
-.energy-indicator.high {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.energy-indicator.low {
-    background: rgba(34, 197, 94, 0.1);
-    color: var(--primary);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-/* Insight Box */
-.insight-box {
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.3);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    margin: 2rem 0;
-}
-
-.insight-box p {
-    margin: 0;
-    color: var(--text-primary);
-}
-
-/* Metaphor Box */
-.metaphor-box {
-    text-align: center;
-    margin: 3rem 0;
-}
-
-.metaphor-box img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: var(--border-radius);
-    margin-bottom: 1rem;
-    opacity: 0.9;
-}
-
-/* Solution Box */
-.solution-box {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    margin: 2rem 0;
-    border: 1px solid var(--border);
-}
-
-.large-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
-}
-
-/* Methods Grid */
-.methods-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.method-card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-}
-
-.method-card:hover {
-    background: var(--bg-hover);
-    transform: translateY(-2px);
-}
-
-.method-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.section-intro {
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-}
-
-.conclusion-text {
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 3rem;
-    color: var(--text-primary);
-}
-
-/* Video Section */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
-    margin: 2rem 0;
-    background: var(--bg-darker);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Features List */
-.features-list {
-    margin: 2rem 0;
-}
-
-.feature {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.feature:last-child {
-    border-bottom: none;
-}
-
-.check-icon {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    background: var(--primary);
-    color: var(--bg-main);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-}
-
-.feature-content h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-}
-
-/* Benefits Grid */
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.benefit {
-    text-align: center;
-    padding: 2rem;
-}
-
-.benefit-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.benefit h3 {
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-}
-
-/* Testimonials */
-.testimonials {
-    margin: 2rem 0;
-}
-
-.testimonial {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 2rem;
-    border-left: 4px solid var(--primary);
-}
-
-.testimonial p {
-    font-style: italic;
-    margin-bottom: 1rem;
-    color: var(--text-secondary);
-}
-
-.testimonial cite {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--primary);
-}
-
-/* Price Box */
-.price-box {
-    background: var(--bg-card);
-    padding: 3rem;
-    border-radius: var(--border-radius);
-    text-align: center;
-    margin: 3rem 0;
-    border: 2px solid var(--primary);
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 1rem 0;
-}
-
-.price-note {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-}
-
-/* Bonuses Grid */
-.bonuses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.bonus {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    border: 1px dashed var(--primary);
-}
-
-.bonus-label {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--bg-main);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-/* Guarantee Box */
-.guarantee-box {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    border-left: 4px solid var(--primary);
-}
-
-.guarantee-box p {
-    color: var(--text-secondary);
-}
-
-/* Privacy Note */
-.privacy-note {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    margin-top: 1rem;
-}
-
-/* Footer */
-footer {
-    background: var(--bg-darker);
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-    text-align: center;
-}
-
-footer p {
-    color: var(--text-muted);
-    margin: 0.5rem 0;
-    font-size: 0.875rem;
-}
-
-/* Loading State */
-.loading {
-    opacity: 0.6;
-    cursor: wait;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-    
-    section {
-        padding: 60px 0;
-    }
-    
-    .hero {
-        padding: 80px 0;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.75rem;
-    }
-    
-    .cta-button {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .scenario-grid,
-    .process-grid,
-    .methods-grid,
-    .benefits-grid,
-    .bonuses-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    .feature {
-        flex-direction: column;
-    }
-    
-    .price {
-        font-size: 2.5rem;
-    }
-}
-
-/* Smooth Scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Selection Styling */
-::selection {
-    background: var(--primary);
-    color: var(--bg-main);
-}
-
-::-moz-selection {
-    background: var(--primary);
-    color: var(--bg-main);
-}
-
-/* Price Slash Styling */
-.price-preview {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    background: var(--bg-card);
-    border-radius: 50px;
-    border: 1px solid var(--border);
-}
-
-.original-price {
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    text-decoration: line-through;
-    opacity: 0.7;
-}
-
-.current-price {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.discount-badge {
-    background: var(--text-danger);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 700;
-    animation: pulse 2s infinite;
-}
-
-/* Enhanced Price Box */
-.limited-time-offer {
-    background: linear-gradient(90deg, transparent, var(--text-danger), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: inline-block;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-}
-
-.offer-icon {
-    animation: flame 1s infinite alternate;
-}
-
-@keyframes flame {
-    from { transform: scale(1) rotate(-5deg); }
-    to { transform: scale(1.1) rotate(5deg); }
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-}
-
-.price-wrapper {
-    position: relative;
-    margin: 20px 0;
-}
-
-.price-slash {
-    display: inline-block;
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.original-price-large {
-    font-size: 2rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    opacity: 0.6;
-    display: inline-block;
-    position: relative;
-}
-
-.slash-line {
-    position: absolute;
-    top: 50%;
-    left: -5%;
-    right: -5%;
-    height: 3px;
-    background: var(--text-danger);
-    transform: rotate(-15deg);
-    opacity: 0.8;
-}
-
-.price {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 1rem 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
-    }
-    to {
-        text-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.4);
-    }
-}
-
-.savings-badge {
-    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-    color: var(--bg-main);
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: 700;
-    display: inline-block;
-    margin: 15px 0;
-    font-size: 1.1rem;
-}
-
-.urgency-text {
-    color: var(--text-danger);
-    font-weight: 600;
-    margin-top: 20px;
-    animation: blink 2s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-}
-
-/* Strike Price in Button */
-.strike-price {
+/* Strike Price Styling */
+.cta-button .strike-price {
     text-decoration: line-through;
     opacity: 0.6;
     font-size: 0.9em;
-    color: inherit;
+    margin: 0 2px; /* Small margin for spacing */
+    display: inline; /* Keep inline */
 }
 
-/* Final Price Display */
-.final-price-display {
-    background: var(--bg-card);
-    border: 2px solid var(--primary);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 30px auto;
-    max-width: 400px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+/* Arrow Icon */
+.arrow-icon {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    transition: transform 0.2s;
 }
 
-.was-price {
-    color: var(--text-muted);
-    text-decoration: line-through;
-    font-size: 1.2rem;
-}
-
-.now-price {
-    color: var(--primary);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.save-today {
-    background: var(--text-danger);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    white-space: nowrap;
-}
-
-/* Price Animation on Hover */
-.price-box:hover .price {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-
-.price-box:hover .original-price-large {
-    opacity: 0.4;
-    transition: opacity 0.3s ease;
-}
-
-/* Pulse Animation */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
-    }
-}
-
-/* ============================================
-   MOBILE RESPONSIVENESS FIXES
-   ============================================ */
-
-/* Base Mobile Adjustments */
+/* Tablet Styles */
 @media (max-width: 768px) {
-    /* Global Typography */
-    body {
-        font-size: 16px;
-        line-height: 1.6;
-    }
-    
-    h1 {
-        font-size: 1.75rem !important;
-        line-height: 1.2;
-        margin-bottom: 1rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem !important;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-    }
-    
-    h3 {
-        font-size: 1.25rem !important;
-    }
-    
-    p {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    /* Section Padding */
-    section {
-        padding: 40px 0;
-    }
-    
-    /* Container Padding */
-    .container {
-        padding: 0 20px;
-    }
-    
-    /* Hero Section Mobile */
-    .hero {
-        padding: 60px 0;
-    }
-    
-    .hero .headline {
-        font-size: 2rem !important;
-        padding: 0 10px;
-    }
-    
-    .hero .subheadline {
-        font-size: 1.1rem;
-        padding: 0 10px;
-    }
-    
-    .hero .description {
-        font-size: 1rem;
-        padding: 0 10px;
-        margin-bottom: 1.5rem;
-    }
-    
-    /* Price Preview Mobile */
-    .price-preview {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-        margin-bottom: 1.5rem;
-        width: auto;
-        max-width: 280px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .original-price {
-        font-size: 1.25rem;
-    }
-    
-    .current-price {
-        font-size: 1.5rem;
-    }
-    
-    .discount-badge {
-        font-size: 0.875rem;
-        padding: 6px 12px;
-    }
-    
-    /* CTA Button Mobile */
     .cta-button {
+        /* Maintain horizontal layout */
         width: 100%;
-        max-width: 320px;
-        padding: 16px 24px;
-        font-size: 0.95rem;
-        justify-content: center;
+        max-width: 400px;
         margin: 0 auto;
-        display: flex;
-        min-height: 54px; /* Better touch target */
-        line-height: 1.2;
+        padding: 16px 20px;
+        font-size: 0.9rem; /* Slightly smaller text */
+        justify-content: center;
+        white-space: normal; /* Allow controlled wrapping */
+        line-height: 1.3;
         text-align: center;
+        min-height: 54px;
+        display: flex;
+        flex-direction: row; /* Force horizontal */
     }
     
     .cta-button.large {
         padding: 18px 24px;
-        font-size: 1rem;
+        font-size: 0.95rem;
         min-height: 60px;
     }
     
+    /* Handle long text */
     .cta-button .strike-price {
         display: inline;
-        margin-right: 5px;
-    }
-    
-    /* Cards and Grids */
-    .scenario-grid,
-    .process-grid,
-    .methods-grid,
-    .benefits-grid,
-    .bonuses-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .scenario-card,
-    .process-card,
-    .method-card {
-        padding: 1.5rem;
-    }
-    
-    /* Pain List Mobile */
-    .pain-list li {
-        padding: 1rem 0 1rem 1.5rem;
-        font-size: 0.95rem;
-    }
-    
-    /* Truth Box Mobile */
-    .truth-box {
-        padding: 1.5rem;
-    }
-    
-    .truth-box p {
-        font-size: 1rem;
-    }
-    
-    /* Feature List Mobile */
-    .feature {
-        flex-direction: column;
-        gap: 1rem;
-        padding-bottom: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .feature-content h3 {
-        font-size: 1.1rem;
-    }
-    
-    .feature-content p {
-        font-size: 0.95rem;
-    }
-    
-    /* Video Wrapper Mobile */
-    .video-wrapper {
-        margin: 1.5rem 0;
-    }
-    
-    /* Price Box Mobile */
-    .price-box {
-        padding: 2rem 1.5rem;
-        margin: 2rem 0;
-    }
-    
-    .limited-time-offer {
-        font-size: 0.8rem;
-        padding: 8px 15px;
-    }
-    
-    .original-price-large {
-        font-size: 1.75rem;
-    }
-    
-    .price {
-        font-size: 2.5rem !important;
-    }
-    
-    .savings-badge {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-    
-    /* Final Price Display Mobile */
-    .final-price-display {
-        flex-direction: column;
-        gap: 10px;
-        padding: 1.5rem;
-        max-width: 90%;
-    }
-    
-    .was-price {
-        font-size: 1.1rem;
-    }
-    
-    .now-price {
-        font-size: 1.4rem;
-    }
-    
-    .save-today {
-        font-size: 0.9rem;
-        padding: 6px 12px;
-    }
-    
-    /* Testimonials Mobile */
-    .testimonial {
-        padding: 1.5rem;
-    }
-    
-    .testimonial p {
-        font-size: 0.95rem;
-    }
-    
-    /* Benefits Mobile */
-    .benefit {
-        padding: 1.5rem;
-    }
-    
-    .benefit-icon {
-        font-size: 2.5rem;
-    }
-    
-    .benefit h3 {
-        font-size: 1.2rem;
-    }
-    
-    .benefit p {
-        font-size: 0.95rem;
-    }
-    
-    /* Bonus Cards Mobile */
-    .bonus {
-        padding: 1.5rem;
-    }
-    
-    .bonus h3 {
-        font-size: 1.2rem;
-    }
-    
-    .bonus p {
-        font-size: 0.95rem;
-    }
-    
-    /* Section Intro Text */
-    .section-intro {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-    
-    /* Guarantee Box Mobile */
-    .guarantee-box {
-        padding: 1.5rem;
-    }
-    
-    .guarantee-box p {
-        font-size: 0.95rem;
+        font-size: 0.85em;
     }
 }
 
-/* Small Mobile Devices (iPhone SE, etc.) */
+/* Mobile Styles */
 @media (max-width: 480px) {
-    /* Ultra-compact typography */
-    body {
-        font-size: 15px;
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-    
-    /* Hero Section Small Mobile */
-    .hero {
-        padding: 40px 0;
-    }
-    
-    .hero .headline {
-        font-size: 1.5rem !important;
-    }
-    
-    .hero .subheadline {
-        font-size: 1rem;
-    }
-    
-    .hero .description {
-        font-size: 0.95rem;
-    }
-    
-    /* CTA Button Small Mobile */
     .cta-button {
+        /* Compact but still horizontal */
         width: calc(100% - 30px);
         max-width: none;
-        padding: 14px 20px;
-        font-size: 0.9rem;
         margin: 0 15px;
+        padding: 14px 16px;
+        font-size: 0.85rem; /* Smaller font for mobile */
+        gap: 8px;
+        min-height: 50px;
     }
     
     .cta-button.large {
-        padding: 16px 20px;
-        font-size: 0.95rem;
-    }
-    
-    /* Make strike-through price stack */
-    .cta-button .strike-price {
-        display: block;
-        font-size: 0.8rem;
-        margin-bottom: 2px;
-    }
-    
-    /* Price Elements Small Mobile */
-    .price-preview {
-        max-width: 250px;
-        padding: 12px;
-    }
-    
-    .original-price {
-        font-size: 1.1rem;
-    }
-    
-    .current-price {
-        font-size: 1.3rem;
-    }
-    
-    .price {
-        font-size: 2rem !important;
-    }
-    
-    .original-price-large {
-        font-size: 1.5rem;
-    }
-    
-    /* Cards Small Mobile */
-    .scenario-card,
-    .process-card,
-    .method-card,
-    .bonus {
-        padding: 1.25rem;
-    }
-    
-    /* Pain List Small Mobile */
-    .pain-list li {
+        padding: 16px 18px;
         font-size: 0.9rem;
-        padding-left: 1.25rem;
+        min-height: 54px;
     }
     
-    /* Section Headings */
-    h2 {
-        font-size: 1.3rem !important;
-    }
-    
-    h3 {
-        font-size: 1.1rem !important;
-    }
-    
-    /* Price Box Small Mobile */
-    .price-box {
-        padding: 1.5rem 1rem;
-    }
-    
-    /* Final Price Display Small Mobile */
-    .final-price-display {
-        padding: 1.25rem;
-    }
-    
-    .was-price {
-        font-size: 1rem;
-    }
-    
-    .now-price {
-        font-size: 1.25rem;
-    }
-    
-    /* Footer Small Mobile */
-    footer p {
-        font-size: 0.8rem;
-    }
-}
-
-/* Touch-Friendly Adjustments */
-@media (hover: none) and (pointer: coarse) {
-    /* Larger touch targets */
-    .cta-button {
-        min-height: 48px;
-    }
-    
-    /* Remove hover effects on touch devices */
-    .scenario-card:hover,
-    .process-card:hover,
-    .method-card:hover {
-        transform: none;
-    }
-    
-    /* Active states for touch feedback */
-    .cta-button:active {
-        transform: scale(0.98);
-        background: var(--primary-hover);
-    }
-}
-
-/* Landscape Mobile Adjustments */
-@media (max-width: 768px) and (orientation: landscape) {
-    .hero {
-        padding: 40px 0;
-    }
-    
-    .hero .headline {
-        font-size: 1.75rem !important;
-    }
-    
-    section {
-        padding: 30px 0;
-    }
-}
-
-/* Fix Button Text Wrapping */
-.cta-button {
-    white-space: normal;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
-.cta-button span {
-    display: inline-block;
-}
-
-/* Prevent Horizontal Scroll */
-html, body {
-    overflow-x: hidden;
-}
-
-section {
-    overflow-x: hidden;
-}
-
-/* Better Mobile Spacing */
-@media (max-width: 768px) {
-    /* Add breathing room between sections */
-    section + section {
-        border-top: 1px solid var(--border);
-    }
-    
-    /* Improve readability with better spacing */
-    p + p {
-        margin-top: 1rem;
-    }
-    
-    /* Make lists more readable */
-    ul, ol {
-        padding-left: 1.5rem;
-    }
-    
-    /* Better spacing for headings */
-    h2 {
-        margin-top: 0;
-        margin-bottom: 1rem;
-        padding: 0 10px;
-    }
-    
-    h3 {
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-    }
-}
-
-/* Fix Specific Mobile Issues */
-@media (max-width: 480px) {
-    /* Prevent text cutoff */
-    .container {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    /* Fix long words breaking layout */
-    p, li, h1, h2, h3 {
-        word-break: break-word;
-        hyphens: auto;
-    }
-    
-    /* Ensure images don't break layout */
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    
-    /* Fix video wrapper */
-    .video-wrapper {
-        margin-left: -15px;
-        margin-right: -15px;
-        border-radius: 0;
-    }
-}
-
-/* Samsung Galaxy & Larger Phones */
-@media (min-width: 375px) and (max-width: 414px) {
-    .cta-button {
-        font-size: 1rem;
-        padding: 16px 28px;
-    }
-    
-    .hero .headline {
-        font-size: 1.75rem !important;
-    }
-}
-
-/* iPad & Tablets Portrait */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .container {
-        padding: 0 30px;
-    }
-    
-    .cta-button {
-        max-width: 400px;
-        margin: 0 auto;
-        display: flex;
-    }
-    
-    .price-box {
-        max-width: 600px;
-        margin: 2rem auto;
-    }
-}
-
-/* Quick Fix - Force Horizontal Button */
-@media (max-width: 768px) {
-    .cta-button {
-        display: flex !important;
-        flex-direction: row !important;
-        white-space: nowrap !important;
-        width: auto !important;
-        max-width: 100% !important;
-        padding: 14px 20px !important;
-        margin: 10px auto !important;
-        overflow-x: auto !important;
-        font-size: 0.85rem !important;
-    }
-    
-    .cta-button.large {
-        padding: 16px 24px !important;
-        font-size: 0.9rem !important;
-    }
-    
-    /* Hide strike price on mobile to save space */
+    /* Hide strike price on very small screens if needed */
     .cta-button .strike-price {
-        display: none !important;
+        display: none; /* Hide on small screens */
     }
     
-    /* Or make everything smaller */
-    .cta-button * {
-        font-size: inherit !important;
+    /* Or make it smaller */
+    .cta-button .strike-price {
+        display: inline;
+        font-size: 0.75em;
+        opacity: 0.5;
     }
 }
 
+/* Alternative: Abbreviated Text for Mobile */
 @media (max-width: 480px) {
-    .cta-button {
-        font-size: 0.8rem !important;
-        padding: 12px 16px !important;
+    /* Option 1: Use data attributes for mobile text */
+    .cta-button::before {
+        content: attr(data-mobile-text);
     }
+    
+    /* Option 2: Hide parts of text on mobile */
+    .cta-button .mobile-hide {
+        display: none;
+    }
+}
+
+/* Specific Fix for Final CTA Button */
+@media (max-width: 768px) {
+    .section-cta .cta-button.large {
+        /* Keep it horizontal and centered */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 380px;
+        margin: 20px auto;
+        white-space: nowrap;
+        overflow-x: auto; /* Allow horizontal scroll if needed */
+    }
+}
+
+/* Very Small Devices - Compact Version */
+@media (max-width: 360px) {
+    .cta-button {
+        font-size: 0.8rem;
+        padding: 12px 14px;
+        gap: 6px;
+    }
+    
+    /* Use shorter text */
+    .cta-button .full-text {
+        display: none;
+    }
+    
+    .cta-button .short-text {
+        display: inline;
+    }
+}
+
+/* Prevent Button Text Breaking */
+.cta-button {
+    /* Flexbox properties to keep inline */
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+}
+
+.cta-button > * {
+    flex-shrink: 1; /* Allow text to shrink if needed */
+}
+
+.cta-button .arrow-icon {
+    flex-shrink: 0; /* Keep arrow icon size */
+    margin-left: 8px;
 }
