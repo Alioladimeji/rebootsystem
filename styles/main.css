@@ -1,8 +1,283 @@
 /* ============================================
-   FIXED BUTTON STYLING - MAINTAINS SHAPE
+   TOTAL REBOOT SYSTEM - COMPLETE CSS
+   Dark Theme with Mobile Responsiveness
    ============================================ */
 
-/* Base Button Style - Keep Consistent */
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark Theme Colors */
+    --primary: #22c55e;
+    --primary-hover: #16a34a;
+    --primary-light: rgba(34, 197, 94, 0.1);
+    
+    /* Dark Backgrounds */
+    --bg-main: #0f0f0f;
+    --bg-alt: #171717;
+    --bg-darker: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --bg-hover: #222222;
+    
+    /* Text Colors */
+    --text-primary: #f0f0f0;
+    --text-secondary: #a8a8a8;
+    --text-muted: #737373;
+    --text-danger: #ef4444;
+    
+    /* Borders */
+    --border: rgba(255, 255, 255, 0.1);
+    --border-light: rgba(255, 255, 255, 0.05);
+    
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --line-height: 1.7;
+    
+    /* Spacing */
+    --container-max: 1200px;
+    --container-narrow: 800px;
+    --section-padding: 80px 0;
+    
+    /* Effects */
+    --border-radius: 8px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 18px;
+    line-height: var(--line-height);
+    color: var(--text-primary);
+    background: var(--bg-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container.narrow {
+    max-width: var(--container-narrow);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.25rem;
+    color: var(--text-secondary);
+}
+
+strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+em {
+    font-style: italic;
+    color: var(--text-primary);
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* Text Utilities */
+.text-primary {
+    color: var(--primary);
+}
+
+.text-danger {
+    color: var(--text-danger);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Selection Styling */
+::selection {
+    background: var(--primary);
+    color: var(--bg-main);
+}
+
+::-moz-selection {
+    background: var(--primary);
+    color: var(--bg-main);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+section {
+    padding: var(--section-padding);
+}
+
+.section-main {
+    background: var(--bg-main);
+}
+
+.section-alt {
+    background: var(--bg-alt);
+}
+
+.section-darker {
+    background: var(--bg-darker);
+}
+
+.section-pricing {
+    background: var(--bg-main);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.section-cta {
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border);
+    padding: 60px 0;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    padding: 100px 0;
+    text-align: center;
+    background: var(--bg-main);
+    border-bottom: 1px solid var(--border);
+}
+
+.hero .headline {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hero .subheadline {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hero .description {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.hero .guarantee {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   PRICE SLASH STYLING
+   ============================================ */
+
+.price-preview {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border-radius: 50px;
+    border: 1px solid var(--border);
+}
+
+.original-price {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.current-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.discount-badge {
+    background: var(--text-danger);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+/* ============================================
+   CTA BUTTONS
+   ============================================ */
+
 .cta-button {
     display: inline-flex;
     align-items: center;
@@ -18,154 +293,1043 @@
     transition: all 0.2s;
     font-family: inherit;
     letter-spacing: 0.5px;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-direction: row;
 }
 
-/* Large Button Variant */
+.cta-button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
 .cta-button.large {
     padding: 20px 40px;
     font-size: 1.1rem;
 }
 
-/* Strike Price Styling */
-.cta-button .strike-price {
-    text-decoration: line-through;
-    opacity: 0.6;
-    font-size: 0.9em;
-    margin: 0 2px; /* Small margin for spacing */
-    display: inline; /* Keep inline */
-}
-
-/* Arrow Icon */
 .arrow-icon {
-    flex-shrink: 0; /* Prevent icon from shrinking */
+    flex-shrink: 0;
     transition: transform 0.2s;
 }
 
-/* Tablet Styles */
-@media (max-width: 768px) {
-    .cta-button {
-        /* Maintain horizontal layout */
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 16px 20px;
-        font-size: 0.9rem; /* Slightly smaller text */
-        justify-content: center;
-        white-space: normal; /* Allow controlled wrapping */
-        line-height: 1.3;
-        text-align: center;
-        min-height: 54px;
-        display: flex;
-        flex-direction: row; /* Force horizontal */
+.cta-button:hover .arrow-icon {
+    transform: translateX(3px);
+}
+
+.strike-price {
+    text-decoration: line-through;
+    opacity: 0.6;
+    font-size: 0.9em;
+    margin: 0 2px;
+    display: inline;
+}
+
+.loading {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+
+.content-box {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+}
+
+.section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.conclusion-text {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    color: var(--text-primary);
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: rgba(251, 191, 36, 0.1);
+    border-left: 4px solid #fbbf24;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+}
+
+.highlight-box p {
+    margin: 0;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Truth Box */
+.truth-box {
+    background: var(--primary);
+    color: var(--bg-main);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.truth-box p {
+    margin: 0;
+    color: var(--bg-main);
+    font-size: 1.1rem;
+}
+
+.truth-box strong {
+    color: var(--bg-main);
+}
+
+/* Theory Box */
+.theory-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+/* Insight Box */
+.insight-box {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 2rem 0;
+}
+
+.insight-box p {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Solution Box */
+.solution-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin: 2rem 0;
+    border: 1px solid var(--border);
+}
+
+.large-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+/* Metaphor Box */
+.metaphor-box {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.metaphor-box img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+/* ============================================
+   CARDS AND GRIDS
+   ============================================ */
+
+/* Scenario Cards */
+.scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.scenario-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.scenario-card:hover {
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+}
+
+.scenario-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Process Grid */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.process-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.process-card:hover {
+    background: var(--bg-hover);
+}
+
+.process-card .number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: var(--bg-main);
+    border-radius: 50%;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.energy-indicator {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.energy-indicator.high {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.energy-indicator.low {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Methods Grid */
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.method-card {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.method-card:hover {
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+}
+
+.method-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.benefit {
+    text-align: center;
+    padding: 2rem;
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+/* Bonuses Grid */
+.bonuses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.bonus {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--primary);
+}
+
+.bonus-label {
+    display: inline-block;
+    background: var(--primary);
+    color: var(--bg-main);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+/* Pain List */
+.pain-list {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+}
+
+.pain-list li {
+    position: relative;
+    padding: 1rem 0 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.pain-list li:last-child {
+    border-bottom: none;
+}
+
+.pain-list li:before {
+    content: "×";
+    position: absolute;
+    left: 0;
+    color: var(--text-danger);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Features List */
+.features-list {
+    margin: 2rem 0;
+}
+
+.feature {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.feature:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background: var(--primary);
+    color: var(--bg-main);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.feature-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   PRICING SECTION
+   ============================================ */
+
+/* Price Box */
+.price-box {
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin: 3rem 0;
+    border: 2px solid var(--primary);
+}
+
+.limited-time-offer {
+    background: linear-gradient(90deg, transparent, var(--text-danger), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.offer-icon {
+    animation: flame 1s infinite alternate;
+}
+
+@keyframes flame {
+    from { transform: scale(1) rotate(-5deg); }
+    to { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.price-wrapper {
+    position: relative;
+    margin: 20px 0;
+}
+
+.price-slash {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.original-price-large {
+    font-size: 2rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    opacity: 0.6;
+    display: inline-block;
+    position: relative;
+}
+
+.slash-line {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    right: -5%;
+    height: 3px;
+    background: var(--text-danger);
+    transform: rotate(-15deg);
+    opacity: 0.8;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
     }
-    
-    .cta-button.large {
-        padding: 18px 24px;
-        font-size: 0.95rem;
-        min-height: 60px;
-    }
-    
-    /* Handle long text */
-    .cta-button .strike-price {
-        display: inline;
-        font-size: 0.85em;
+    to {
+        text-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.4);
     }
 }
 
-/* Mobile Styles */
-@media (max-width: 480px) {
+.savings-badge {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: var(--bg-main);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.price-note {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.urgency-text {
+    color: var(--text-danger);
+    font-weight: 600;
+    margin-top: 20px;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Final Price Display */
+.final-price-display {
+    background: var(--bg-card);
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.was-price {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    font-size: 1.2rem;
+}
+
+.now-price {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.save-today {
+    background: var(--text-danger);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+/* Price Box Hover Effect */
+.price-box:hover .price {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* ============================================
+   FINAL CTA SECTION
+   ============================================ */
+
+.section-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-cta .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.section-cta > .container > * {
+    max-width: 700px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-cta .cta-button {
+    width: auto;
+    margin: 20px 0;
+}
+
+.cta-button-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.privacy-note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* ============================================
+   OTHER ELEMENTS
+   ============================================ */
+
+/* Video Section */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    margin: 2rem 0;
+    background: var(--bg-darker);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Testimonials */
+.testimonials {
+    margin: 2rem 0;
+}
+
+.testimonial {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary);
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.testimonial cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Guarantee Box */
+.guarantee-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary);
+}
+
+.guarantee-box p {
+    color: var(--text-secondary);
+}
+
+/* Footer */
+footer {
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+footer p {
+    color: var(--text-muted);
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   TABLET RESPONSIVE (768px and below)
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Typography */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 50px 0;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero .headline {
+        font-size: 2rem;
+    }
+    
+    .hero .subheadline {
+        font-size: 1.1rem;
+    }
+    
+    .hero .description {
+        font-size: 1rem;
+    }
+    
+    /* Price Preview */
+    .price-preview {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        max-width: 280px;
+    }
+    
+    .original-price {
+        font-size: 1.25rem;
+    }
+    
+    .current-price {
+        font-size: 1.5rem;
+    }
+    
+    /* CTA Buttons - Keep Horizontal */
     .cta-button {
-        /* Compact but still horizontal */
-        width: calc(100% - 30px);
-        max-width: none;
-        margin: 0 15px;
-        padding: 14px 16px;
-        font-size: 0.85rem; /* Smaller font for mobile */
-        gap: 8px;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        white-space: nowrap;
         min-height: 50px;
     }
     
     .cta-button.large {
-        padding: 16px 18px;
-        font-size: 0.9rem;
+        padding: 16px 24px;
+        font-size: 0.95rem;
         min-height: 54px;
     }
     
-    /* Hide strike price on very small screens if needed */
     .cta-button .strike-price {
-        display: none; /* Hide on small screens */
+        display: none; /* Hide on mobile to save space */
     }
     
-    /* Or make it smaller */
-    .cta-button .strike-price {
-        display: inline;
-        font-size: 0.75em;
-        opacity: 0.5;
-    }
-}
-
-/* Alternative: Abbreviated Text for Mobile */
-@media (max-width: 480px) {
-    /* Option 1: Use data attributes for mobile text */
-    .cta-button::before {
-        content: attr(data-mobile-text);
+    /* Grids */
+    .scenario-grid,
+    .process-grid,
+    .methods-grid,
+    .benefits-grid,
+    .bonuses-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
-    /* Option 2: Hide parts of text on mobile */
-    .cta-button .mobile-hide {
-        display: none;
+    /* Cards */
+    .scenario-card,
+    .process-card,
+    .method-card,
+    .bonus {
+        padding: 1.5rem;
     }
-}
-
-/* Specific Fix for Final CTA Button */
-@media (max-width: 768px) {
-    .section-cta .cta-button.large {
-        /* Keep it horizontal and centered */
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+    
+    /* Price Box */
+    .price-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .original-price-large {
+        font-size: 1.75rem;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+    }
+    
+    /* Final Price Display */
+    .final-price-display {
+        flex-direction: column;
+        max-width: 90%;
+    }
+    
+    /* Features */
+    .feature {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* Testimonials */
+    .testimonial {
+        padding: 1.5rem;
+    }
+    
+    /* Final CTA */
+    .section-cta .cta-button {
         width: 100%;
-        max-width: 380px;
-        margin: 20px auto;
-        white-space: nowrap;
-        overflow-x: auto; /* Allow horizontal scroll if needed */
+        max-width: 350px;
     }
 }
 
-/* Very Small Devices - Compact Version */
+/* ============================================
+   MOBILE RESPONSIVE (480px and below)
+   ============================================ */
+
+@media (max-width: 480px) {
+    /* Base */
+    body {
+        font-size: 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Sections */
+    section {
+        padding: 40px 0;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero .headline {
+        font-size: 1.5rem;
+    }
+    
+    .hero .subheadline {
+        font-size: 1rem;
+    }
+    
+    .hero .description {
+        font-size: 0.95rem;
+    }
+    
+    /* CTA Buttons - Compact but Horizontal */
+    .cta-button {
+        width: calc(100% - 30px);
+        max-width: none;
+        margin: 0 15px;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        gap: 6px;
+        min-height: 48px;
+    }
+    
+    .cta-button.large {
+        padding: 14px 18px;
+        font-size: 0.9rem;
+        min-height: 50px;
+    }
+    
+    /* Price Elements */
+    .price-preview {
+        max-width: 250px;
+        padding: 12px;
+    }
+    
+    .original-price {
+        font-size: 1.1rem;
+    }
+    
+    .current-price {
+        font-size: 1.3rem;
+    }
+    
+    .price {
+        font-size: 2rem;
+    }
+    
+    .original-price-large {
+        font-size: 1.5rem;
+    }
+    
+    /* Cards */
+    .scenario-card,
+    .process-card,
+    .method-card,
+    .bonus {
+        padding: 1.25rem;
+    }
+    
+    /* Pain List */
+    .pain-list li {
+        font-size: 0.9rem;
+        padding-left: 1.25rem;
+    }
+    
+    /* Price Box */
+    .price-box {
+        padding: 1.5rem 1rem;
+    }
+    
+    /* Final Price Display */
+    .final-price-display {
+        padding: 1.25rem;
+    }
+    
+    .was-price {
+        font-size: 1rem;
+    }
+    
+    .now-price {
+        font-size: 1.25rem;
+    }
+    
+    /* Video */
+    .video-wrapper {
+        margin-left: -15px;
+        margin-right: -15px;
+        border-radius: 0;
+    }
+    
+    /* Footer */
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   VERY SMALL DEVICES (360px and below)
+   ============================================ */
+
 @media (max-width: 360px) {
     .cta-button {
         font-size: 0.8rem;
         padding: 12px 14px;
-        gap: 6px;
+        gap: 4px;
     }
     
-    /* Use shorter text */
-    .cta-button .full-text {
-        display: none;
+    .cta-button.large {
+        font-size: 0.85rem;
+        padding: 14px 16px;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .cta-button {
+        min-height: 48px;
     }
     
-    .cta-button .short-text {
-        display: inline;
+    /* Remove hover effects on touch devices */
+    .scenario-card:hover,
+    .process-card:hover,
+    .method-card:hover {
+        transform: none;
+    }
+    
+    /* Active states for touch feedback */
+    .cta-button:active {
+        transform: scale(0.98);
+        background: var(--primary-hover);
     }
 }
 
-/* Prevent Button Text Breaking */
-.cta-button {
-    /* Flexbox properties to keep inline */
-    flex-wrap: nowrap !important;
-    flex-direction: row !important;
+/* ============================================
+   LANDSCAPE MOBILE
+   ============================================ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 0;
+    }
+    
+    .hero .headline {
+        font-size: 1.75rem;
+    }
+    
+    section {
+        padding: 30px 0;
+    }
 }
 
-.cta-button > * {
-    flex-shrink: 1; /* Allow text to shrink if needed */
+/* ============================================
+   IPAD & TABLETS
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .cta-button {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+    }
+    
+    .price-box {
+        max-width: 600px;
+        margin: 2rem auto;
+    }
 }
 
-.cta-button .arrow-icon {
-    flex-shrink: 0; /* Keep arrow icon size */
-    margin-left: 8px;
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Prevent text breaking */
+.no-wrap {
+    white-space: nowrap;
+}
+
+/* Force centering */
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+/* Hide on desktop */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
 }
