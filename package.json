@@ -1,0 +1,21 @@
+{
+  "name": "total-reboot-landing",
+  "version": "1.0.0",
+  "description": "Landing page for The Total Reboot System",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'No build required for static site'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "landing-page",
+    "mental-health",
+    "self-improvement"
+  ],
+  "author": "Total Reboot System",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
