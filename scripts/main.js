@@ -218,3 +218,72 @@ function handleSpecialOffer() {
 
 console.log('Total Reboot System initialized');
 console.log('Payment URL configured:', PAYMENT_URL);
+
+// ============================================
+// PAYMENT CONFIGURATION
+// ============================================
+const PAYMENT_URL = 'https://selar.co/9qa1x9kt26';
+
+// ============================================
+// DETECT MOBILE DEVICE
+// ============================================
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// ============================================
+// HANDLE PURCHASE - WORKS ON ALL DEVICES
+// ============================================
+function handlePurchase(event) {
+    // Prevent default action
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
+    // Track conversion
+    try {
+        trackEvent('Conversion', 'Purchase Click', '₦2,500');
+    } catch (e) {
+        console.log('Tracking error:', e);
+    }
+    
+    // Mobile devices: Use direct redirect
+    if (isMobile()) {
+        window.location.href = PAYMENT_URL;
+    } else {
+        // Desktop: Try to open in new tab, fallback to redirect
+        const newWindow = window.open(PAYMENT_URL, '_blank');
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            // Pop-up blocked, use redirect instead
+            window.location.href = PAYMENT_URL;
+        }
+    }
+    
+    return false;
+}
+
+// ============================================
+// INITIALIZE ALL CTA BUTTONS
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all CTA buttons
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    
+    ctaButtons.forEach(button => {
+        // Remove any existing onclick attribute
+        button.removeAttribute('onclick');
+        
+        // Add click event listener
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            handlePurchase(e);
+        });
+        
+        // Add touch event for mobile
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            handlePurchase(e);
+        });
+    });
+});
