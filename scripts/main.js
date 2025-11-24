@@ -141,7 +141,7 @@ function scrollToSection(sectionId) {
 
 // Handle Purchase
 function handlePurchase() {
-    const paymentLink = 'https://your-payment-page.com';
+    const paymentLink = 'https://selar.com/9qa1x9kt26';
     
     // Track event
     trackEvent('Conversion', 'Purchase Click', '₦2,500');
