@@ -141,28 +141,19 @@ function scrollToSection(sectionId) {
 
 // Handle Purchase
 function handlePurchase() {
-    const button = event.target.closest('.cta-button');
+    const paymentLink = 'https://your-payment-page.com';
     
-    // Track conversion
+    // Track event
     trackEvent('Conversion', 'Purchase Click', '₦2,500');
     
-    // Simple loading state
-    const originalContent = button.innerHTML;
-    button.classList.add('loading');
-    button.innerHTML = 'Processing...';
+    // Open in new tab
+    window.open(paymentLink, '_blank');
     
-    // Simulate processing
-    setTimeout(() => {
-        // In production: redirect to payment gateway
-        alert('Connect to payment gateway: Paystack, Flutterwave, or Stripe');
-        
-        // Reset button
-        button.classList.remove('loading');
-        button.innerHTML = originalContent;
-        
-        // Example redirect:
-        // window.location.href = 'https://paystack.com/pay/your-product';
-    }, 1500);
+    // Optional: Show message in current tab
+    const button = event.target.closest('.cta-button');
+    if (button) {
+        button.innerHTML = 'Opening payment page...';
+    }
 }
 
 // Simple notification when user tries to leave
