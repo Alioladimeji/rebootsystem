@@ -1021,3 +1021,24 @@ html {
         max-width: 400px;
     }
 }
+
+/* Make anchor tags styled as buttons work properly */
+a.cta-button {
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Remove blue highlight on mobile */
+    user-select: none; /* Prevent text selection on mobile */
+}
+
+a.cta-button:hover {
+    text-decoration: none;
+}
+
+/* Mobile specific fix */
+@media (max-width: 768px) {
+    a.cta-button {
+        display: flex;
+        -webkit-touch-callout: none;
+    }
+}
