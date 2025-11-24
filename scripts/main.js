@@ -1,5 +1,11 @@
-// Simple, clean JavaScript - no excessive animations
+// ============================================
+// PAYMENT CONFIGURATION
+// ============================================
+const PAYMENT_URL = 'https://selar.co/9qa1x9kt26'; // Your Selar link
 
+// ============================================
+// MAIN INITIALIZATION
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for internal links
     initSmoothScroll();
@@ -14,7 +20,37 @@ document.addEventListener('DOMContentLoaded', function() {
     initAnalytics();
 });
 
-// Smooth Scrolling
+// ============================================
+// HANDLE PURCHASE - REDIRECTS TO SELAR
+// ============================================
+function handlePurchase() {
+    // Get the button that was clicked
+    const button = event.target.closest('.cta-button');
+    
+    // Track conversion attempt
+    trackEvent('Conversion', 'Purchase Click', '₦2,500');
+    
+    // Option 1: Direct redirect (same tab)
+    // window.location.href = PAYMENT_URL;
+    
+    // Option 2: Open in new tab (recommended for Selar)
+    window.open(PAYMENT_URL, '_blank');
+    
+    // Optional: Update button to show action was taken
+    if (button) {
+        const originalContent = button.innerHTML;
+        button.innerHTML = '✓ Opening payment page...';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            button.innerHTML = originalContent;
+        }, 3000);
+    }
+}
+
+// ============================================
+// SMOOTH SCROLLING
+// ============================================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -30,7 +66,9 @@ function initSmoothScroll() {
     });
 }
 
-// Simple Scroll Reveal
+// ============================================
+// SCROLL REVEAL
+// ============================================
 function initScrollReveal() {
     const reveals = document.querySelectorAll('.scenario-card, .process-card, .method-card, .feature, .benefit');
     
@@ -58,7 +96,9 @@ function initScrollReveal() {
     revealOnScroll(); // Check on load
 }
 
-// Reading Progress
+// ============================================
+// PROGRESS TRACKING
+// ============================================
 function initProgressTracking() {
     let timeOnPage = 0;
     let scrollDepth = 0;
@@ -96,7 +136,9 @@ function initProgressTracking() {
     });
 }
 
-// Analytics
+// ============================================
+// ANALYTICS
+// ============================================
 function initAnalytics() {
     // Track CTA clicks
     document.querySelectorAll('.cta-button').forEach(button => {
@@ -109,12 +151,13 @@ function initAnalytics() {
     // Track video plays
     const videos = document.querySelectorAll('iframe');
     videos.forEach(video => {
-        // Note: Limited tracking for YouTube embeds without API
         console.log('Video present on page');
     });
 }
 
-// Track Events
+// ============================================
+// TRACK EVENTS
+// ============================================
 function trackEvent(category, action, label = null) {
     // Google Analytics
     if (typeof gtag !== 'undefined') {
@@ -128,7 +171,9 @@ function trackEvent(category, action, label = null) {
     console.log(`Event: ${category} - ${action}${label ? ' - ' + label : ''}`);
 }
 
-// Scroll to Section
+// ============================================
+// SCROLL TO SECTION
+// ============================================
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -139,34 +184,21 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Handle Purchase
-function handlePurchase() {
-    const paymentLink = 'https://selar.com/9qa1x9kt26';
-    
-    // Track event
-    trackEvent('Conversion', 'Purchase Click', '₦2,500');
-    
-    // Open in new tab
-    window.open(paymentLink, '_blank');
-    
-    // Optional: Show message in current tab
-    const button = event.target.closest('.cta-button');
-    if (button) {
-        button.innerHTML = 'Opening payment page...';
-    }
-}
-
-// Simple notification when user tries to leave
+// ============================================
+// EXIT INTENT DETECTION
+// ============================================
 let exitIntentShown = false;
 document.addEventListener('mouseleave', function(e) {
     if (e.clientY <= 0 && !exitIntentShown) {
         exitIntentShown = true;
         console.log('User showing exit intent');
-        // Could show a simple modal here if needed
+        // Could show an exit modal here if needed
     }
 });
 
-// Page visibility tracking
+// ============================================
+// PAGE VISIBILITY TRACKING
+// ============================================
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
         console.log('User left tab');
@@ -175,51 +207,14 @@ document.addEventListener('visibilitychange', function() {
     }
 });
 
-console.log('Total Reboot System initialized');
-
-// Add Countdown Timer for Special Offer
-function initPriceCountdown() {
-    // Set end time (24 hours from now)
-    const endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
-    
-    // Create countdown element
-    const countdownHTML = `
-        <div class="price-countdown">
-            <p class="countdown-label">🔥 Special Price Ends In:</p>
-            <div class="countdown-timer">
-                <span id="hours">23</span>h
-                <span id="minutes">59</span>m
-                <span id="seconds">59</span>s
-            </div>
-        </div>
-    `;
-    
-    // Insert after price box
-    const priceBox = document.querySelector('.price-box');
-    if (priceBox) {
-        priceBox.insertAdjacentHTML('beforeend', countdownHTML);
-    }
-    
-    // Update timer
-    setInterval(() => {
-        const now = new Date().getTime();
-        const distance = endTime - now;
-        
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        
-        if (distance < 0) {
-            document.querySelector('.price-countdown').innerHTML = '<p>Offer Expired - Refresh for New Deal</p>';
-        }
-    }, 1000);
+// ============================================
+// SPECIAL OFFER HANDLER (if using exit intent)
+// ============================================
+function handleSpecialOffer() {
+    // Redirect to Selar with special offer if you have one
+    window.open(PAYMENT_URL, '_blank');
+    trackEvent('Conversion', 'Special Offer Click', '₦2,500');
 }
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', function() {
-    initPriceCountdown();
-});
+console.log('Total Reboot System initialized');
+console.log('Payment URL configured:', PAYMENT_URL);
